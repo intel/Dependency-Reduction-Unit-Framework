@@ -49,17 +49,12 @@
 *.log
 
 # Self Test files
+eUnit/eUnit/eUnitSelfTest/build/*
 GDBManipulator/build/gdbMannTest/gdbMannTest
-
-eUnit/eUnit/eUnitSelfTest/Host/resultNoTestMode
-eUnit/eUnit/eUnitSelfTest/Host/result*
-eUnit/eUnit/eUnitSelfTest/Host/tests/*.c
-
-eUnit/eUnit/eUnitSelfTest/BistMode/bisttest
 eUnit/eUnit/eUnitSelfTest/BistMode/tests/*.c
-eUnit/eUnit/eUnitSelfTest/BistMode/isOutput
+eUnit/eUnit/eUnitSelfTest/BistMode/bisttest
 eUnit/eUnit/eUnitSelfTest/Host/.idea/
 eUnit/eUnit/eUnitSelfTest/Host/runOnHost*
-eUnit/eUnit/eUnitSelfTest/build/
+eUnit/eUnit/eUnitSelfTest/Host/tests/*.c
 
 

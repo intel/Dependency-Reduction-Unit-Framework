@@ -4,7 +4,6 @@
  * @author: Sebastian Balz
  */
 
-
 #include "TestMode.h"
 #include <thread>
 #include "main.h"
@@ -275,7 +274,8 @@ bool testMode::executeMode() {
 	Log::log("Set \"amountOfInfo\" to \""+tmp, Info, logFilter::GDB_Input_Streams);
     com->setTestLevel(testLevel);
     if(optInTests != "") {
-		if(eUnitFeatureChecker->checkFeature("RunTimeTestFiler",com->getTargetVersion()) != FeatureSupported) {
+        featureReturn ret;
+		if((ret = eUnitFeatureChecker->checkFeature("RunTimeTestFiler",com->getTargetVersion()))!= FeatureSupported) {
             Log::log("eUnit does not Support RunTimeTestFiler in this Version. Failed with " + to_string(ret),CriticError);
             utils::cleanUpAndExit(-14);
         }
@@ -398,4 +398,5 @@ string testMode::analyseResult()
 {
   return  analyser->generateStringResult() + "\n"+ disabledTest;
 }
+
 

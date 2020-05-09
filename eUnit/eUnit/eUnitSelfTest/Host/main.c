@@ -5,7 +5,7 @@
  */
 
 #include <stdio.h>
-#include "../../eUnit.h"
+#include "eUnit.h"
 
 int main() {
     //addPrintFunction(printf); // add printf to see output on the host cli

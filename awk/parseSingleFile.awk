@@ -136,7 +136,7 @@ END{
 		print " return numberOfFailedTests; \n}\n\n"
 	}
 
-	split(ARGV[ARGIND],filename,".");
+	split(ARGV[1],filename,".");
 	print "unsigned int  __eUnitFile_" filename[1] "()\n{"
 	print "  unsigned int numberOfFailedTests = 0;"
 	print "    disabledTest += "  disabledTest ";"

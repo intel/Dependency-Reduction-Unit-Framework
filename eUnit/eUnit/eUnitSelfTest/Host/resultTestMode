@@ -1,0 +1,138 @@
+write logfile to .gdbMann.log
+Initiate com-chain ... 
+Start test execution ... 
+
+
+[==========] CRC
+[ RUN      ]
+[       OK ] CRC::shallNotFail
+[ RUN      ]
+[       OK ] CRC::updateCRC_0_Data0
+[ RUN      ]
+[       OK ] CRC::updateCRC_1_Data0
+[ RUN      ]
+[       OK ] CRC::updateCRC_Neg1_Data0
+[ RUN      ]
+[       OK ] CRC::updateCRC_1_Data1
+[ RUN      ]
+[       OK ] CRC::updateCRC_0xff_Data1
+[ RUN      ]
+[       OK ] CRC::crc16_Data_Zeros
+[ RUN      ]
+[       OK ] CRC::crc16_Data_1To7
+[ RUN      ]
+[       OK ] CRC::crc16_Data_Neg1
+[ RUN      ]
+[       OK ] CRC::crc16_Data_Zeros_Size0
+[ RUN      ]
+[       OK ] CRC::crc16_Data_1To7_Size0
+[ RUN      ]
+[       OK ] CRC::crc16_Data_Neg1_Size0
+[ RUN      ]
+[       OK ] CRC::crc16_Data_X_Size0
+[ RUN      ]
+[       OK ] CRC::crc16_Size5000_Data_Zeros
+[ RUN      ]
+[       OK ] CRC::crc16_Size5000_Data_Neg1
+[ RUN      ]
+[       OK ] CRC::crc16_Size5000_Data_1
+[ RUN      ]
+[       OK ] CRC::crc16_Size5000_Data_Index
+[ RUN      ]
+[       OK ] CRC::crc16_Size5000_Data_ReverseIndex
+[ RUN      ]
+[       OK ] CRC::updatecrc16_Size5000_Data_Neg1_step1
+[ RUN      ]
+[       OK ] CRC::updatecrc16_Size5000_Data_Neg1_step5
+[ RUN      ]
+[       OK ] CRC::updatecrc16_Size5000_Data_Index_step1
+[ RUN      ]
+[       OK ] CRC::updatecrc16_Size5000_Data_Index_step5
+[ RUN      ]
+[       OK ] CRC::crc8_Size5000_Data_Zeros
+[ RUN      ]
+[       OK ] CRC::crc8_Size5000_Data_Neg1
+[ RUN      ]
+[       OK ] CRC::crc8_Size5000_Data_1
+[ RUN      ]
+[       OK ] CRC::crc8_Size5000_Data_Index
+[ RUN      ]
+[       OK ] CRC::crc8_Size5000_Data_ReverseIndex
+[ RUN      ]
+[       OK ] CRC::CRC32
+[ RUN      ]
+[       OK ] CRC::CRC32_Size5000_Data_Zeros
+[ RUN      ]
+[       OK ] CRC::CRC32_Size5000_Data_Neg1
+[ RUN      ]
+[       OK ] CRC::crc32_Size5000_Data_1
+[ RUN      ]
+[       OK ] CRC::CRC32_Size5000_Data_Index
+[ RUN      ]
+[       OK ] CRC::CRC32_Size5000_Data_ReverseIndex
+[ RUN      ]
+[       OK ] CRC::CRC32_Buff5
+[----------] 34 tests from CRC
+
+[==========] testThatNeedsquitLong
+
+
+[==========] evaluateGPIO
+[ RUN      ]
+[       OK ] evaluateGPIO::HW0
+[ RUN      ]
+[       OK ] evaluateGPIO::HW1
+[ RUN      ]
+[       OK ] evaluateGPIO::HW254
+[ RUN      ]
+[       OK ] evaluateGPIO::HW255
+[ RUN      ]
+[       OK ] evaluateGPIO::SetErrorCodeTo1
+[----------] 5 tests from evaluateGPIO
+
+[==========] TEST_SOULD_FAIL_ASSERT
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_EQ1
+               (int32) Expected: 1	to be equals to : 0
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_EQ2
+               (int32) Expected: 0	to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_NEQ1
+               (int32) Expected: 1	to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_NEQ2
+               (int32) Expected: 0	to be equals to : 0
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_TRUE
+               (int8) Expected: 0	not to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_TRUE2
+               (int8) Expected: 0	not to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_FALSE1
+               (int8) Expected: 1	not to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_FALSE2
+               (int8) Expected: 1	not to be equals to : 1
+[----------] 8 tests from TEST_SOULD_FAIL_ASSERT
+
+[==========] TEST_SOULD_SUCCEED_ASSERT
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_EQ
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_NEQ
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_NE
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_TRUE
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_FALSE
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_STREQ
+Expected test result: 8 failed tests (if timeout has not been  set).		 printed by "printOverGdb" from the target
+[----------] 6 tests from TEST_SOULD_SUCCEED_ASSERT
+[==========]
+
+Test run : 53  	 Test failed : 8	 Errors : 0
+You have 1 disabled tests

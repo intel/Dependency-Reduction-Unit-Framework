@@ -1,4 +1,19 @@
 init callback 
+[----------]TEST_SOULD_SUCCEED_ASSERT
+[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_EQ
+[       OK ]
+[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_NEQ
+[       OK ]
+[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_NE
+[       OK ]
+[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_TRUE
+[       OK ]
+[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_FALSE
+[       OK ]
+[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_STREQ
+[       OK ]
+[----------]
+
 [----------]TEST_SOULD_FAIL_ASSERT
 [ RUN      ] TEST_SOULD_FAIL_ASSERT.ASSERT_EQ1
 callback: test failed		expected 1 to be equal to 0 
@@ -24,21 +39,6 @@ callback: test failed		expected 1 not to be equal to 1
 [ RUN      ] TEST_SOULD_FAIL_ASSERT.ASSERT_FALSE2
 callback: test failed		expected 1 not to be equal to 1 
 [     FAILD]
-[----------]
-
-[----------]TEST_SOULD_SUCCEED_ASSERT
-[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_EQ
-[       OK ]
-[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_NEQ
-[       OK ]
-[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_NE
-[       OK ]
-[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_TRUE
-[       OK ]
-[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_FALSE
-[       OK ]
-[ RUN      ] TEST_SOULD_SUCCEED_ASSERT.ASSERT_STREQ
-[       OK ]
 [----------]
 
 [----------]CRC

@@ -3,6 +3,48 @@ Initiate com-chain ...
 Start test execution ... 
 
 
+[==========] TEST_SOULD_SUCCEED_ASSERT
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_EQ
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_NEQ
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_NE
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_TRUE
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_FALSE
+[ RUN      ]
+[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_STREQ
+[----------] 6 tests from TEST_SOULD_SUCCEED_ASSERT
+
+[==========] TEST_SOULD_FAIL_ASSERT
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_EQ1
+               (int32) Expected: 1	to be equals to : 0
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_EQ2
+               (int32) Expected: 0	to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_NEQ1
+               (int32) Expected: 1	to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_NEQ2
+               (int32) Expected: 0	to be equals to : 0
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_TRUE
+               (int8) Expected: 0	not to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_TRUE2
+               (int8) Expected: 0	not to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_FALSE1
+               (int8) Expected: 1	not to be equals to : 1
+[ RUN      ]
+[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_FALSE2
+               (int8) Expected: 1	not to be equals to : 1
+[----------] 8 tests from TEST_SOULD_FAIL_ASSERT
+
 [==========] CRC
 [ RUN      ]
 [       OK ] CRC::shallNotFail
@@ -75,7 +117,12 @@ Start test execution ...
 [----------] 34 tests from CRC
 
 [==========] testThatNeedsquitLong
-
+[ RUN      ]
+this Test need some time to execute. It is possibel the define a timeout by using gdbMann with <--timeout <ms>
+ waste some time ... 
+.......... ... this took a long time now :)
+[       OK ] testThatNeedsquitLong::longTest
+[----------] 1 tests from testThatNeedsquitLong
 
 [==========] evaluateGPIO
 [ RUN      ]
@@ -89,50 +136,7 @@ Start test execution ...
 [ RUN      ]
 [       OK ] evaluateGPIO::SetErrorCodeTo1
 [----------] 5 tests from evaluateGPIO
-
-[==========] TEST_SOULD_FAIL_ASSERT
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_EQ1
-               (int32) Expected: 1	to be equals to : 0
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_EQ2
-               (int32) Expected: 0	to be equals to : 1
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_NEQ1
-               (int32) Expected: 1	to be equals to : 1
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_NEQ2
-               (int32) Expected: 0	to be equals to : 0
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_TRUE
-               (int8) Expected: 0	not to be equals to : 1
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_TRUE2
-               (int8) Expected: 0	not to be equals to : 1
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_FALSE1
-               (int8) Expected: 1	not to be equals to : 1
-[ RUN      ]
-[  FAILED  ] TEST_SOULD_FAIL_ASSERT::ASSERT_FALSE2
-               (int8) Expected: 1	not to be equals to : 1
-[----------] 8 tests from TEST_SOULD_FAIL_ASSERT
-
-[==========] TEST_SOULD_SUCCEED_ASSERT
-[ RUN      ]
-[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_EQ
-[ RUN      ]
-[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_NEQ
-[ RUN      ]
-[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_NE
-[ RUN      ]
-[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_TRUE
-[ RUN      ]
-[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_FALSE
-[ RUN      ]
-[       OK ] TEST_SOULD_SUCCEED_ASSERT::ASSERT_STREQ
-Expected test result: 8 failed tests (if timeout has not been  set).		 printed by "printOverGdb" from the target
-[----------] 6 tests from TEST_SOULD_SUCCEED_ASSERT
 [==========]
 
-Test run : 53  	 Test failed : 8	 Errors : 0
+Test run : 54  	 Test failed : 8	 Errors : 0
 You have 1 disabled tests

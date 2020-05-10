@@ -1,0 +1,10 @@
+# Self Test files
+build/*
+BistMode/isOutput
+Host/result*
+BistMode/tests/*.c
+BistMode/bisttest
+Host/.idea/
+Host/runOnHost*
+Host/tests/*.c
+

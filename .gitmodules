@@ -1,0 +1,7 @@
+[submodule "GDBManipulator/lib/CPP-Argument-Parser"]
+	path = GDBManipulator/lib/CPP-Argument-Parser
+	url = git@github.com:diridari/CPP-Argument-Parser.git
+[submodule "GDBManipulator/lib/SimpleLogging"]
+	path = GDBManipulator/lib/SimpleLogging
+	url = git@github.com:diridari/logging-cpp.git
+

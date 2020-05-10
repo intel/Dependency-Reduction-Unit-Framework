@@ -5,7 +5,13 @@ GDBMan=FALSE
 BISTMODE=FALSE
 EUnit=FALSE
 EUnitWithGdbMann=FALSE
+EUnitBuild=FALSE
 cd GDBManipulator/build/
+	if make  
+	then 	EUnitBuild=1
+	else 	EUnitBuild=-1
+	fi
+	
 	if make test 
 	then 	GDBMan=1
 	else 	GDBMan=-1
@@ -52,6 +58,15 @@ if   [ $? == 1 ]
 	fi
 
 echo ""
+echo "-------------------------------------------"
+echo "Build"
+echo "-------------------------------------------"
+if  [ "$EUnitBuild" == 1 ]
+        then 
+                echo   "  Build 		:: success"
+        else 
+                echo   "  Build 		:: failed"
+        fi
 echo "Testresults"
 echo "-------------------------------------------"
 echo "Unit Tests:"
@@ -63,9 +78,9 @@ if  [ "$GDBMan" == 1 ]
         fi
  if [ "$CPPARG" == 1 ]
         then 
-                echo   "  CPP-Argument-Parser 	:: success"
+                echo   "  CPP-Argument-Parser :: success"
         else 
-                echo   "  CPP-Argument-Parser 	:: failed"
+                echo   "  CPP-Argument-Parser :: failed"
         fi
  if [ "$EUnit" == 1 ]
         then 

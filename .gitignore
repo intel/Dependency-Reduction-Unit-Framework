@@ -1,9 +1,9 @@
 ## IDEs
 */.idea
 */.idea/*
-*/.project
-*/.cproject
-*/.settings/*
+*.project
+*.cproject
+*.settings*
 
 #/Build
 */Debug/*
@@ -47,14 +47,5 @@
 
 # Logfiles
 *.log
-
-# Self Test files
-eUnit/eUnit/eUnitSelfTest/build/*
-GDBManipulator/build/gdbMannTest/gdbMannTest
-eUnit/eUnit/eUnitSelfTest/BistMode/tests/*.c
-eUnit/eUnit/eUnitSelfTest/BistMode/bisttest
-eUnit/eUnit/eUnitSelfTest/Host/.idea/
-eUnit/eUnit/eUnitSelfTest/Host/runOnHost*
-eUnit/eUnit/eUnitSelfTest/Host/tests/*.c
 
 

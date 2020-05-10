@@ -171,8 +171,10 @@ bool com_gnu_debugger::initSystem() {
 bool com_gnu_debugger::startTestMode() {
 	 if(!targetIsInTestMode){
 		 Log::log("The target has not defined #EUNIT_TESTMODE with == 1\r\n "
-				 "The current mode expects the target to stop in \"MessageToDebugger\". Is this Flag not set this will not happen (or if the break mode has been disabled).\r\n"
-				 "\tPlease use \"--runMode runMode\" or set the define to 1 and reflash the target with \"-f\"" ,Error);
+				 "The current mode expects the target to stop in \"MessageToDebugger\". Is this Flag not set this will "
+                 "not happen (or if the break mode has been disabled).\r\n"
+				 "  Please use \"--runMode runMode\" or set the define to 1 and reflash the target with \"-f\" \r\n"
+                 "  Another solution might be to check whether the target has been compiled with the debug option\r\n"  ,Error);
 		 return false;
 	 }
 	testStatistic::addGDBExec();
@@ -184,7 +186,7 @@ bool com_gnu_debugger::startTestMode() {
    // wait until Test stating
    // set amount of test result data
    if (!gdbout->hasStopFrames()) {
-       Log::log("Expected that the target has been stoped in function : \"MessageToDebugger\" with the argument \"StartTest\" but has no stop frame", Error);
+       Log::log("Expected that the target has been stopped in function : \"MessageToDebugger\" with the argument \"StartTest\" but has no stop frame", Error);
        return false;
    }
    stopFrame *frame = gdbout->getLatestStopFrame();

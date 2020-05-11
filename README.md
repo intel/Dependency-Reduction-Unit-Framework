@@ -1,6 +1,4 @@
-# Dependency-Reduction-Unit-Framework
-
-# Dependency-Reduction-Unit-Framework for C/C++ -Projects 
+# Dependency-Reduction-Unit-Framework (deUnit)for C/C++ -Projects 
 For further information’s see the wiki! 
 
 To do your first steps it is recommended to read the “[getting started](https://github.com/diridari/EmbeddedTesting/wiki/Getting-Started-with-eUnit)”!
@@ -16,45 +14,40 @@ This application intended to enable dependency reduction in C-projects. Here it 
 One reason for this might be a high number of function calls within the same source file.
 This system allows reduction these dependencies by use the debugger.
 
+## Why?
+ * Testframework with gTest like syntax
+ * Dependency reduction without code changes
+ * Works from embedded deviced to host applications
+ * Build in selftest for the target
+ * generates XML-results for CI
+ 
 ## Director structure
- * [eUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)              :   Framework (running on the target) that communicate with the GDBManipulator 
+ * [edUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)              :   Framework (running on the target) that communicate with the GDBManipulator 
  * [GDB Manipulator(gdbMann)](https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator)    :   Application running on the host machine to reduce the Dependency’s and evaluate the test results
  * awk               :   some scripts to make [test creation](https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation) easier 
- * examples          :   some examples test project for STM32 or host systems 
+ * examples          :   some examples test project 
 
 ## Requirements
-In order to use this system it is necessary to have a working update and debug environment(e.g gdb). This enables to flash and debug the target by the cli. 
+In order to use this system it is necessary to have a working cli debug environment (e.g gdb). 
 
 ## System overview
-For embedded/remote devices 
+(For embedded/remote devices)
 ![Alt text](doc/pic/system.png?raw=true "structure")
-###  Required components
- * GDB-Server: 
-Is the target is an embedded device or a remote device, a GDB-Server is required to establish the connection to the target.
- * Debugger Probe: 
-Is the target is an embedded device, a debugger probe  is required to connect the GDB-Server to the target.
- * GDB-Client
- * Elf-File:  
-It is required to read the memory of the Target in order to reduce dependencies and evaluate the test results. The GDB-client can access these via the elf-file. 
 
- * Program adjustments: The targets application has to be modified: 
-Copy the “eUnit” Folder into you Project and create an ‘invokeAllTest ()’ function which calls each test-group and test-case. For further information’s see the wiki entry. 
 
-## Setup
-In order to work properly, the target needs the “[eUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)”-Framework. Copy and paste it into your project and call the ‘invokeAllTest()’ function after system setup. 
-Redefine the ‘invokeAllTest()’ function and create some Test-Groups with their Test-Cases. Since the function is a weak one this is possible.
-The function ‘invokeAllTest()’ calls each group and each group calls its test-cases.
+## Add eUnit into your Projects
 
-For gTest like syntax see [test creation](https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation) 
+To add ‘[eUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)’ to you own projects it is just necessary to copy the folder ‘/eUnit’ into you project and call the ‘invokeAllTest()’ from the main. 
+To create your own tests each test must get called in the ‘invokeAllTest()’ Function.
+See: [Test creation](https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation)
 
-The function ‘invokeAllTest()’ blocks until the “[GDB Manipulator(gdbMann)](https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator)” application connects with the target and the setup of the test configuration is complete.
-
-After the execution of all tests is done the target continues with the code after the ‘invokeAllTest()’ function in "runMode" or termintaes in "testMode". see :"[gdbMann arguments](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--runmode)"  
+It is highly recommended to generate those functions with the provided ‘awk’-script. Further information’s are provided in the wiki entry: “Test Syntax and Test creation”
 
 ### [Test-Case Generation]((https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation))
 An AWK-Parser allows to create gtest-like testcases and also generates the CallGroup and ‘invokeAllTest()’ functions. 
 For further information see the readme in the awk-folder or the [wiki]((https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation)). 
-### gdbMann
+
+### gdbManipulator (gdbMann)
 The "GDB-Manipulaton"-application([gdbMann]((https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator))) connects with configures the target depending to the [runMode](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--runmode) and [testLevel](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--testlevel). Then its executes all tests and evaluates the test-result. 
 
 The applications requires at least two [command arguments](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments): 
@@ -62,15 +55,9 @@ The applications requires at least two [command arguments](https://github.com/di
 * -elf or -bin
 * -c or --client
 
-#### Elf-File Location 
 
-    "-elf <location>                 path to file
-
-For further informatiosn see the [wiki](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#-elf)
-#### GDB-Client
-location of the corresponding GDB-Client 
-
-     -c <command to call>   or  --client <command to call> command to call the gdb-client
+>  "-elf <location>                 path to file
+>   -c "<command to call>"   or  --client "<command to call>"        command to call the gdb-client
      
 For further informatiosn see the [wiki](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--client)
 
@@ -80,7 +67,7 @@ For embdedded applications it is alos possible to start automatically the gdb se
 If the call contains spaces it is possible to surround the entire command with quotation marks (")
 
 
-    -s <command>  or --server <command>
+    -s "<command>"  or --server "<command>"
 
 e.g.
          
@@ -195,11 +182,3 @@ Now you should see the test output like:
     "testName" : (default) + name and group of the executed test
     "testResults" + result and expected value of an failed test
     "lineNumber" + number of the failed test
-
-## Add eUnit into your Projects
-
-To add ‘[eUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)’ to you own projects it is just necessary to copy the folder ‘/eUnit’ into you project and call the ‘invokeAllTest()’ from the main. 
-To create your own tests each test must get called in the ‘invokeAllTest()’ Function.
-See: [Test creation](https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation)
-
-It is highly recommended to generate those functions with the provided ‘awk’-script. Further information’s are provided in the wiki entry: “Test Syntax and Test creation”

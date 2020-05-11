@@ -1,10 +1,8 @@
 /**
  * Copyright (C) 2020 Intel Corporation
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  * @author: Sebastian Balz
  */
-
-
 
 #include "ArgumentCallBackFunctions.h"
 
@@ -136,10 +134,13 @@ int callBackScript(int i,char ** buff){
 }
 
 argvParser *initProgramArguments() {
+    string desc = "This application helps the eUnit framework to execute test and enables the reduction of dependency’s by using an Debugger.\n"
+                  "It is possible to use the eUnit framework without this application the setting the “SELF_TEST_MODE” flag (see eUnit selftest mode).\n"
+                  "This application requires the binary file (\"-elf\") and a command to invoke the debugger (\"-s <command\">). \n"
+                  "Is the target a remote target (like an microcontroller) it is necessary to start a gdb-server manual or by using the (\"—server <command>\") command.\n"
+                  "This every argument can stored in a defauld config file named <gdbMannDefaultConfig>. This file gets pared without further interaction. ";
     Log::advancedConf()->pintLogSrc(true);
-    string desc = "This application helps the eUnit framework to execute test and enables the reduction of dependency’s by using an Debugger.\n It is possible to use the eUnit framework without this application the setting the “SELF_TEST_MODE” flag (see eUnit selftest mode).\n"
-                  " This application requires the binary file (\"-elf\") and a command to invoke the debugger (\"-s <command\">). \n Is the target a remote target (like an microcontroller) it is necessary to start a gdb-server manual or by using the (\"—server <command>\") command. "
-                  "\nThis every argument can stored in a defauld config file named <gdbMannDefaultConfig>. This file gets pared without further interaction. ";
+
     argvParser *p = new argvParser("gdbMann",desc,true,"%#");
     p->checkForDefaulConfigFilesIn("gdbMannDefaultConfig","~/ ./ ../");
 

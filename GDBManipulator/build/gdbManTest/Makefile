@@ -14,7 +14,7 @@
 #    make
 #
 
-APP =		gdbMannTest
+APP =		gdbManTest
 APP_SRCS =	$(shell find \
 			../../src/ \
 			../../tests  \

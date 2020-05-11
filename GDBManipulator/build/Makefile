@@ -21,7 +21,7 @@ all::
 
 test :
 	make -s -C gdbManTest
-	./gdbMannTest/gdbManTest
+	./gdbManTest/gdbManTest
 
 clean ::
 	make clean -C gdbMan
@@ -29,6 +29,6 @@ clean ::
 
 run ::
 	make -C gdbMan
-	./gdbMann/gdbMan
+	./gdbMan/gdbMan
 
 

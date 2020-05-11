@@ -5,7 +5,7 @@
  */
 
 
-#include <iostream>h
+#include <iostream>
 #include "argvParser.h"
 #include <csignal>
 #include "runModes/AbstractRunMode.h"

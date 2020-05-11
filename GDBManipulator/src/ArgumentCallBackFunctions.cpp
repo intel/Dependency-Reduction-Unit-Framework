@@ -141,8 +141,8 @@ argvParser *initProgramArguments() {
                   "This every argument can stored in a defauld config file named <gdbMannDefaultConfig>. This file gets pared without further interaction. ";
     Log::advancedConf()->pintLogSrc(true);
 
-    argvParser *p = new argvParser("gdbMann",desc,true,"%#");
-    p->checkForDefaulConfigFilesIn("gdbMannDefaultConfig","~/ ./ ../");
+    argvParser *p = new argvParser("gdbMan",desc,true,"%#");
+    p->checkForDefaulConfigFilesIn("gdbManDefaultConfig","~/ ./ ../");
 
 
     p->addSection("Testing");

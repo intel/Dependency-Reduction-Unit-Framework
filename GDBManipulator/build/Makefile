@@ -16,19 +16,19 @@
 
 
 all::
-	make -C gdbMann
-	make -C gdbMannTest
+	make -C  gdbMan
+	make -s -C gdbManTest
 
 test :
-	make -s -C gdbMannTest
-	./gdbMannTest/gdbMannTest
+	make -s -C gdbManTest
+	./gdbMannTest/gdbManTest
 
 clean ::
-	make clean -C gdbMann
-	make clean -C gdbMannTest
+	make clean -C gdbMan
+	make clean -C gdbManTest
 
 run ::
-	make -C gdbMann
-	./gdbMann/gdbMann
+	make -C gdbMan
+	./gdbMann/gdbMan
 
 

@@ -7,17 +7,17 @@ EUnit=FALSE
 EUnitWithGdbMann=FALSE
 EUnitBuild=FALSE
 cd GDBManipulator/build/
-	if make  -s -l
+	if make 
 	then 	EUnitBuild=1
 	else 	EUnitBuild=-1
 	fi
 echo "test GDBManipulator"	
-	if make -s  -l test 
+	if make test 
 	then 	GDBMan=1
 	else 	GDBMan=-1
 	fi
 cd ../lib/CPP-Argument-Parser/build
-	if make test -s -l
+	if make test 
 	then		CPPARG=1
 	else		CPPARG=-1
 	fi

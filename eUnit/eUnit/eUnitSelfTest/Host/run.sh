@@ -16,9 +16,9 @@ gcc -w -o runOnHost1  *.c  tests/*.c ../../eUnit.c  -O0 -ggdb -I ../../ -D EUNIT
 gcc -w -o runOnHost2  *.c  tests/*.c ../../eUnit.c  -O0 -ggdb -I ../../ -D EUNIT_TESTMODE=1 -D EUNIT_USE_SOFTWARTE_BREAK_POINTs=0 -D EUNIT_BISTMODE=0
 gcc -w -o runOnHost3  *.c  tests/*.c ../../eUnit.c  -O0 -ggdb -I ../../ -D EUNIT_TESTMODE=0 -D EUNIT_USE_SOFTWARTE_BREAK_POINTs=0 -D EUNIT_BISTMODE=0
 
-../../../../GDBManipulator/build/gdbMann/gdbMann -host -bin runOnHost1  -c /usr/bin/gdb -nh > resultTestMode
-../../../../GDBManipulator/build/gdbMann/gdbMann -host -bin runOnHost2  -c /usr/bin/gdb -nh > resultTestModeSWBreak
-../../../../GDBManipulator/build/gdbMann/gdbMann -host -bin runOnHost3  -c /usr/bin/gdb -nh -l CriticError > resultNoTestMode
+../../../../GDBManipulator/build/gdbMan/gdbMan -host -bin runOnHost1  -c /usr/bin/gdb -nh > resultTestMode
+../../../../GDBManipulator/build/gdbMan/gdbMan -host -bin runOnHost2  -c /usr/bin/gdb -nh > resultTestModeSWBreak
+../../../../GDBManipulator/build/gdbMan/gdbMan -host -bin runOnHost3  -c /usr/bin/gdb -nh -l CriticError > resultNoTestMode
 
 cmp --silent expectTestMode resultTestMode || echo "failed on Test Mode" || exit -1;
 cmp --silent expectTestMode resultTestModeSWBreak || echo "failed on Test Mode with no SW breakpoints" || exit -1;

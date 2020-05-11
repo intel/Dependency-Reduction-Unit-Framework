@@ -6,8 +6,6 @@ set(src_comChain
         ${dir}ComGnuDebugger.cpp
         ${dir}ComArmNoneEabiGdb.h
         ${dir}ComChain.cpp
-        ${dir}ComSerial.cpp
         ${dir}ComGnuDebugger.h
         ${dir}ComChain.h
-        ${dir}ComSerial.h
         PARENT_SCOPE )

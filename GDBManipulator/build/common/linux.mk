@@ -14,7 +14,7 @@
 #    make
 #
 
-CXXFLAGS +=		$(addprefix -I,$(APP_INCS)) -std=c++11 -g3 -Og
+CXXFLAGS +=		$(addprefix -I,$(APP_INCS)) -std=c++11 -g3 -Og 
 _APP_OBJS1 = 	$(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(APP_SRCS)))
 _APP_OBJS = 	$(notdir $(_APP_OBJS1))
 VPATH =			$(sort $(dir $(_APP_OBJS1)))

@@ -34,7 +34,7 @@ test:	all
 	
 $(APP): $(_APP_OBJS)
 	mkdir -p build 
-	gcc -O0  -o build/$@ $^ ${CFLAGS} $(addprefix -l,$(APP_SLIB)) -I "../ ../.."
+	gcc -w -O0  -o build/$@ $^ ${CFLAGS} $(addprefix -l,$(APP_SLIB)) -I "../ ../.."
 	mv *.o build/
 
 debug::

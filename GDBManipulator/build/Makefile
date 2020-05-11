@@ -20,7 +20,7 @@ all::
 	make -C gdbMannTest
 
 test :
-	make -C gdbMannTest
+	make -s -C gdbMannTest
 	./gdbMannTest/gdbMannTest
 
 clean ::

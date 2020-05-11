@@ -15,11 +15,12 @@ One reason for this might be a high number of function calls within the same sou
 This system allows reduction these dependencies by use the debugger.
 
 ## Why?
- * Testframework with gTest like syntax
+ *	Test framework with gTest like syntax
  * Dependency reduction without code changes
- * Works from embedded deviced to host applications
- * Build in selftest for the target
- * generates XML-results for CI
+ * Works from embedded devices to host applications
+ *	Build in self-test for the target
+ *	generates XML-results for CI
+
  
 ## Director structure
  * [edUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)              :   Framework (running on the target) that communicate with the GDBManipulator 

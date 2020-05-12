@@ -23,9 +23,9 @@ This system allows reduction these dependencies by use the debugger.
 
  
 ## Director structure
- * [edUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)              :   Framework (running on the target) that communicate with the GDBManipulator 
- * [GDB Manipulator(gdbMann)](https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator)    :   Application running on the host machine to reduce the Dependency’s and evaluate the test results
- * awk               :   some scripts to make [test creation](https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation) easier 
+ * [edUnit](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/eUnit)              :   Framework (running on the target) that communicate with the GDBManipulator 
+ * [GDB Manipulator(gdbMann)](https://github.com/intel/Dependency-Reduction-Unit-Frameworkwiki/GDBManipulator)    :   Application running on the host machine to reduce the Dependency’s and evaluate the test results
+ * awk               :   some scripts to make [test creation](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/Test-Syntax-and-Test-creation) easier 
  * examples          :   some examples test project 
 
 ## Requirements
@@ -40,18 +40,18 @@ In order to use this system it is necessary to have a working cli debug environm
 
 To add ‘[eUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit)’ to you own projects it is just necessary to copy the folder ‘/eUnit’ into you project and call the ‘invokeAllTest()’ from the main. 
 To create your own tests each test must get called in the ‘invokeAllTest()’ Function.
-See: [Test creation](https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation)
+See: [Test creation](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/Test-Syntax-and-Test-creation)
 
 It is highly recommended to generate those functions with the provided ‘awk’-script. Further information’s are provided in the wiki entry: “Test Syntax and Test creation”
 
-### [Test-Case Generation]((https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation))
+### [Test-Case Generation]((https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/Test-Syntax-and-Test-creation))
 An AWK-Parser allows to create gtest-like testcases and also generates the CallGroup and ‘invokeAllTest()’ functions. 
-For further information see the readme in the awk-folder or the [wiki]((https://github.com/diridari/EmbeddedTesting/wiki/Test-Syntax-and-Test-creation)). 
+For further information see the readme in the awk-folder or the [wiki]((https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/Test-Syntax-and-Test-creation)). 
 
 ### gdbManipulator (gdbMann)
-The "GDB-Manipulaton"-application([gdbMann]((https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator))) connects with configures the target depending to the [runMode](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--runmode) and [testLevel](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--testlevel). Then its executes all tests and evaluates the test-result. 
+The "GDB-Manipulaton"-application([gdbMann]((https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/GDBManipulator))) connects with configures the target depending to the [runMode](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--runmode) and [testLevel](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--testlevel). Then its executes all tests and evaluates the test-result. 
 
-The applications requires at least two [command arguments](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments): 
+The applications requires at least two [command arguments](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/gdbMann_Program-arguments): 
 
 * -elf or -bin
 * -c or --client
@@ -60,7 +60,7 @@ The applications requires at least two [command arguments](https://github.com/di
 >  "-elf <location>                 path to file
 >   -c "<command to call>"   or  --client "<command to call>"        command to call the gdb-client
      
-For further informatiosn see the [wiki](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments#--client)
+For further informatiosn see the [wiki](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/gdbMann_Program-arguments#--client)
 
 #### GDB-Server
 For embdedded applications it is alos possible to start automatically the gdb server. Hear it is nessesary to set as command the entire server call. 
@@ -96,7 +96,7 @@ Flash the elf file before executing the tests.
 
     -f or --flash
 
-For further Information’s about the arguments see the corresponding [wiki-entry](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments). 
+For further Information’s about the arguments see the corresponding [wiki-entry](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/gdbMann_Program-arguments). 
 
 ## Mocks and Stubs
 #### Example signature 
@@ -124,7 +124,7 @@ Stubs allow returning every expression as long as the expression has the same re
 ***
 # Getting Started with eUnit
 
-This document descripts how to do the first steps with [eUnit](https://github.com/diridari/EmbeddedTesting/wiki/eUnit) with dependeny reduction. It is divided into two Parts:
+This document descripts how to do the first steps with [eUnit](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/eUnit) with dependeny reduction. It is divided into two Parts:
 
     using the examples
     use in your own projects
@@ -153,7 +153,7 @@ for example you can use:
 
 If the Target is not jet flashed you need additional to add ‘-f’ to flash the target with the elf-file For Further information’s see the Wiki entry: “Program Arguments”
 
-Run the Application ‘[gdbMann](https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator)’ with those [arguments](https://github.com/diridari/EmbeddedTesting/wiki/gdbMann_Program-arguments). e.g.
+Run the Application ‘[gdbMann](https://github.com/diridari/EmbeddedTesting/wiki/GDBManipulator)’ with those [arguments](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/gdbMann_Program-arguments). e.g.
 
     ./gdbMann -elf <elfFile> -s "/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/Servers/ST-LINK_gdbserver/ST-LINK_gdbserver -d" -c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/arm-atollic-eabi-gdb
 

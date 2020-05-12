@@ -100,7 +100,7 @@ string generateFurtherInformationAboutExit(int code, int moreInfo = 0) {
 
     }
     if(code <-1)
-    s += "\n\t\tFor further information's see:\t \"https://github.com/diridari/EmbeddedTesting/wiki\"\n";
+    s += "\n\t\tFor further information's see:\t \"https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki\"\n";
     return s;
 }
 

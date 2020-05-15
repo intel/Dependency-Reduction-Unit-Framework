@@ -1,5 +1,5 @@
 echo "run self test"
-echo "test GDBManipulator"
+echo "build GDBManipulator"
 CPPARG=FALSE
 GDBMan=FALSE
 BISTMODE=FALSE
@@ -7,17 +7,17 @@ EUnit=FALSE
 EUnitWithGdbMann=FALSE
 EUnitBuild=FALSE
 cd GDBManipulator/build/
-	if make  
+	if make 
 	then 	EUnitBuild=1
 	else 	EUnitBuild=-1
 	fi
-	
+echo "test GDBManipulator"	
 	if make test 
 	then 	GDBMan=1
 	else 	GDBMan=-1
 	fi
 cd ../lib/CPP-Argument-Parser/build
-	if make test
+	if make test 
 	then		CPPARG=1
 	else		CPPARG=-1
 	fi
@@ -28,7 +28,7 @@ ldconfig -p | grep cunit
 	then
 		echo "found cunit"
 		make test
-		if make test
+		if make test -s -l
 		then
 			echo Unit success
 			EUnit=1

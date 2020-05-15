@@ -1,5 +1,5 @@
 # Copyright (C) 2020 Intel Corporation
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: AGPL-3.0-or-later
 # Usage: Arguments: filename
 # This script parses the source file and replaces the TEST(CLASS,NAME) makro with a function
 # signature. For each class it creates a callClass_function (test_callGroupe<Class>) and for each

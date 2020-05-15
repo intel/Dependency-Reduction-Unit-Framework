@@ -1,6 +1,6 @@
 ## IDEs
-*/.idea
-*/.idea/*
+*/.idea*
+.idea/
 *.project
 *.cproject
 *.settings*
@@ -47,5 +47,7 @@
 
 # Logfiles
 *.log
+
+
 
 

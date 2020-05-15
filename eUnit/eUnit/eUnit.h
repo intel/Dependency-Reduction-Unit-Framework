@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2020 Intel Corporation
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  * @author: Sebastian Balz
  */
 
@@ -44,12 +44,16 @@ extern "C"
 /**
  * Build in Self Test Mode
  * enables the user to define callback function for
- * 	* print test result 	<eUnit_SetPrintFunction()>
+ * 	* print test result 	<addPrintFunction()>
  * 	* on fail/success/init/end
  * 	no drawbacks besides a little overhead for the callbacks
+ **********
+ * 	When the usage is to perform selftests  call disableBreakMode();
+ * 	  before invoking all tests to prevent Trace/breakpoint trap
+ **********
  * */
 #ifndef EUNIT_BISTMODE
-#define EUNIT_BISTMODE 			1
+#define EUNIT_BISTMODE 			0
 #endif
 
 /**

@@ -1,5 +1,5 @@
 # Copyright (C) 2020 Intel Corporation
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: AGPL-3.0-or-later
 #
 #  CONTENT
 #    simple Makefile to build all source for GdbManipulator and GdbManipulatorTest
@@ -16,19 +16,19 @@
 
 
 all::
-	make -C gdbMann
-	make -C gdbMannTest
+	make -C  gdbMan
+	make -s -C gdbManTest
 
 test :
-	make -C gdbMannTest
-	./gdbMannTest/gdbMannTest
+	make -s -C gdbManTest
+	./gdbManTest/gdbManTest
 
 clean ::
-	make clean -C gdbMann
-	make clean -C gdbMannTest
+	make clean -C gdbMan
+	make clean -C gdbManTest
 
 run ::
-	make -C gdbMann
-	./gdbMann/gdbMann
+	make -C gdbMan
+	./gdbMan/gdbMan
 
 

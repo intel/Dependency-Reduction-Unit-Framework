@@ -1,5 +1,5 @@
 # Copyright (C) 2020 Intel Corporation
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: AGPL-3.0-or-later
 #
 #  CONTENT
 #    simple Makefile to build all source for GdbManipulator
@@ -34,7 +34,7 @@ test:	all
 	
 $(APP): $(_APP_OBJS)
 	mkdir -p build 
-	gcc -O0  -o build/$@ $^ ${CFLAGS} $(addprefix -l,$(APP_SLIB)) -I "../ ../.."
+	gcc -w -O0  -o build/$@ $^ ${CFLAGS} $(addprefix -l,$(APP_SLIB)) -I "../ ../.."
 	mv *.o build/
 
 debug::

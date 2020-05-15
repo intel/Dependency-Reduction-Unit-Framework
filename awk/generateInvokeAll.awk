@@ -1,5 +1,5 @@
 # Copyright (C) 2020 Intel Corporation
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: AGPL-3.0-or-later
 # Input: List of all generated test files.  It is expected that each file contains the
 # function: -- void call_File_< fileName > -- (without file extension)  This script generates the
 # function void invokeAllTest().  The function calls all call_File_<fileName> functions.

@@ -1,9 +1,8 @@
 /**
  * Copyright (C) 2020 Intel Corporation
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  * @author: Sebastian Balz
  */
-
 
 #ifndef GDBMANIPULATOR_GDBSTREAMS_H
 #define GDBMANIPULATOR_GDBSTREAMS_H

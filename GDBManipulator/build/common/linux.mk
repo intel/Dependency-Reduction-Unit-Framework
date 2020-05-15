@@ -1,5 +1,5 @@
 # Copyright (C) 2020 Intel Corporation
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: AGPL-3.0-or-later
 #
 #  CONTENT
 #    common make rules for linux
@@ -14,7 +14,7 @@
 #    make
 #
 
-CXXFLAGS +=		$(addprefix -I,$(APP_INCS)) -std=c++11 -g3 -Og
+CXXFLAGS +=		$(addprefix -I,$(APP_INCS)) -std=c++11 -g3 -Og 
 _APP_OBJS1 = 	$(patsubst %.cc,%.o,$(patsubst %.cpp,%.o,$(APP_SRCS)))
 _APP_OBJS = 	$(notdir $(_APP_OBJS1))
 VPATH =			$(sort $(dir $(_APP_OBJS1)))

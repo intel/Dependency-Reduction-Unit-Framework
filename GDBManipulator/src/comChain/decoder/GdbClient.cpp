@@ -14,8 +14,11 @@ gdbClient::gdbClient(gdbDecoder *decoder_) {
 
 gdbClient::~gdbClient() {
     delete decode;
+    decode = nullptr;
     delete errorStream;
+     errorStream = nullptr;
     delete outStream;
+     outStream = nullptr;
 
 }
 

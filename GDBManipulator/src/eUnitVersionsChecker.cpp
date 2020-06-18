@@ -20,4 +20,5 @@ bool defineEunitVersions(){
         return false;
     if(eUnitFeatureChecker->addFeature(printOverGDB) == FeatureAlreadyExists)
         return false;
+    return true;
 }

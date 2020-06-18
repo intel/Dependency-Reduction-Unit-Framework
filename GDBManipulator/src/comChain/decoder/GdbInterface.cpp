@@ -25,7 +25,7 @@ char * coppyString(const char * toCoppy)
     int size = strlen(toCoppy)+1;
     char * out = static_cast<char *>(malloc(size));
     memset(out,0,size);
-    memcpy(out,toCoppy,size);
+    memcpy_s(out,size,toCoppy,size);
     return out;
 }
 

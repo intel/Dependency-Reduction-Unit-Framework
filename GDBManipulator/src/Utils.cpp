@@ -212,7 +212,7 @@ void utils::sharedMemoryInit() {
 
 void utils::sharedMemoryWrite(char *buff, int size) {
 #ifdef __linux__
-    memcpy(shmem, buff, size);
+    memcpy_s(shmem,128, buff, size);
 #elif __WIN32
     HANDLE hMapFile;
     LPCTSTR pBuf;

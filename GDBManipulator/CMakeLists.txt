@@ -17,6 +17,7 @@ include_directories(src)
 
 message(${src_files})
 add_executable(gdbMan ${src_files}  src/main.cpp src/main.h )
+add_executable(gdbMan  src/main.cpp src/main.h  ${src_files})
 
 #link libs
 target_link_libraries(gdbMan pthread SimpleLoggingLib CPPArgvParsLib)

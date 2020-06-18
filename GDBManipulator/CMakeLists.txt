@@ -1,6 +1,6 @@
 # Copyright (C) 2020 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.16)
 project(gdbMan)
 set(CMAKE_CXX_STANDARD 11)
 
@@ -16,7 +16,7 @@ include_directories(lib/SimpleLogging/include)
 include_directories(src)
 
 message(${src_files})
-add_executable(gdbMan ${src_files}  src/main.cpp src/main.h )
+add_executable(gdbMan  src/main.cpp src/main.h ${src_files} )
 
 #link libs
 target_link_libraries(gdbMan pthread SimpleLoggingLib CPPArgvParsLib)

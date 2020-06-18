@@ -4,6 +4,7 @@
 *.project
 *.cproject
 *.settings*
+*cmake-build-debug/
 
 #/Build
 */Debug/*
@@ -47,6 +48,8 @@
 
 # Logfiles
 *.log
+
+
 
 
 

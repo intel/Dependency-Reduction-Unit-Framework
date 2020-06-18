@@ -62,6 +62,7 @@ uint8_t *memoryDump::getDump() {
 memoryDump::~memoryDump() {
 
     delete[] data;
+    data = nullptr;
 }
 
 int memoryDump::getSize() {

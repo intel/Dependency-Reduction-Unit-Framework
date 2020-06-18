@@ -24,8 +24,12 @@ char * coppyString(const char * toCoppy)
 {
     int size = strlen(toCoppy)+1;
     char * out = static_cast<char *>(malloc(size));
+    if(out == 0){
+        Log::log_("failed to alloc memory",Error);
+        return 0;
+    }
     memset(out,0,size);
-    memcpy(out,toCoppy,size);
+    memcpy_s(out,size,toCoppy,size);
     return out;
 }
 
@@ -42,6 +46,10 @@ char ** buildArgv(string applicationCallString, int amountOfAdditionalArguments,
     outSize += count(applicationCallString.begin() ,applicationCallString.end(),' ' );
     outSize += amountOfAdditionalArguments;
     char ** out = static_cast<char**> (malloc(outSize * sizeof(char*)));
+    if(out == 0){
+        Log::log_("failed to alloc memory",Error);
+        return 0;
+    }
     memset(out,0,outSize * sizeof(char*));
     int indexInOut = 0;
     int subIndex = 0;
@@ -110,7 +118,7 @@ static void handleGDB(string command, nameLessPipe *nlp, string elfLoc, int port
     char mi2[] = "--interpreter=mi2";
     char qiet[] = "-q";
     char port_v[20];
-    sprintf(port_v, "%d", port);
+    sprintf_s(port_v,20, "%d", port);
 
     char elf_[elfLoc.length() + 1] = {0,};
 
@@ -121,6 +129,10 @@ static void handleGDB(string command, nameLessPipe *nlp, string elfLoc, int port
     char ** argv = buildArgv(command,4,argsUserDef);
     string call = "";
     int i = 0;
+    if(argv == NULL){
+        Log::log("failed to buildArgv",Error);
+        return;
+    }
     while(argv[i] != NULL) {
         call += string(argv[i]) + " ";
         i++;
@@ -203,7 +215,7 @@ static void handleServer(nameLessPipe *nlp) {
                 notJetFailed = false;
             } else if (l.find("Shutting down...") != string::npos) {
             	char buff[50] = {0,};
-            	sprintf(buff, "%s", utils::sharedMemoryRead());
+            	sprintf_s(buff, "%s",50, utils::sharedMemoryRead());
             	buff[4] = 0;  // set end string if match
             	if(strcmp(buff,"true") != 0){
 					Log::log("GDB-Server has been shutting down unexpected", Error, logFilter::GDB_Server);
@@ -238,14 +250,14 @@ static void callGdbServer(string command, nameLessPipe *nlp) {
             index = 0;
         string location = command.substr(0, index);
         Log::log("GDB-Server : set location of child process to " + location, Info, logFilter::GDB_Server);
-        if(chdir(location.c_str())<0){
+        if(location == nullpntr || chdir(location.c_str())<0){
         	return ;
         }
         if(execv(argv[0], argv) == -1) {
             Log::log("GDB-Server exit with errno: \t\"" + string(strerror(errno))+ "\"  ", CriticError, logFilter::GDB_Server);
         }
         char buff[50] = {0,};
-		sprintf(buff, "%s", utils::sharedMemoryRead());
+		sprintf_s(buff, "%s",,50, utils::sharedMemoryRead());
 		buff[4] = 0;  // set end string if match
 		if(strcmp(buff,"true") != 0){
             //cout << buff<<endl;

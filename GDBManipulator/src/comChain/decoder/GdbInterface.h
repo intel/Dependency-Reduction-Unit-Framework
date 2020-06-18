@@ -40,6 +40,7 @@ public:
 
     ~gdbInterface() {
         delete client;
+        client = nullptr;
     }
 
     gdbClient *getClient();;

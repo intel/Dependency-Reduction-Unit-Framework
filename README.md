@@ -1,9 +1,9 @@
 # Dependency-Reduction-Unit-Framework (deUnit)for C/C++ -Projects 
-For further information’s see the wiki! 
+For further information’s see the wiki(work in process)! 
 
-To do your first steps it is recommended to read the “[getting started](https://github.com/diridari/EmbeddedTesting/wiki/Getting-Started-with-eUnit)”!
+To do your first steps it is recommended to read the “[getting started(work in process)](https://github.com/diridari/EmbeddedTesting/wiki/Getting-Started-with-eUnit)”!
 
-clone: `git clone --recurse-submodules https://github.com/diridari/EmbeddedTesting.git`
+clone: `git clone --recurse-submodules https://github.com/intel/Dependency-Reduction-Unit-Framework.git`
 
 ## OS support
 This application has been developed on a Ubuntu 18.4 LTS systems. It also has been tested on a Windows-10 System but does not support all feature (rescue result buffer if gdbMann gets interrupted by CTRL+C) 

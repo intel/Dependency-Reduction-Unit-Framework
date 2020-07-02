@@ -211,8 +211,12 @@ void utils::sharedMemoryInit() {
 }
 
 void utils::sharedMemoryWrite(char *buff, int size) {
+    if(size >128){
+        Log:log("write more than 128 byte to shared mem --> fail op",CriticError)
+        return;
+    }
 #ifdef __linux__
-    memcpy_s(shmem,128, buff, size);
+    memcpy(shmem, buff, size);
 #elif __WIN32
     HANDLE hMapFile;
     LPCTSTR pBuf;

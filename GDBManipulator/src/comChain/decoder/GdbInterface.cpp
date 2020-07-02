@@ -29,7 +29,7 @@ char * coppyString(const char * toCoppy)
         return 0;
     }
     memset(out,0,size);
-    memcpy_s(out,size,toCoppy,size);
+    memcpy(out,toCoppy,size);
     return out;
 }
 
@@ -118,7 +118,7 @@ static void handleGDB(string command, nameLessPipe *nlp, string elfLoc, int port
     char mi2[] = "--interpreter=mi2";
     char qiet[] = "-q";
     char port_v[20];
-    sprintf_s(port_v,20, "%d", port);
+    sprintf(port_v, "%d", port);
 
     char elf_[elfLoc.length() + 1] = {0,};
 
@@ -215,7 +215,7 @@ static void handleServer(nameLessPipe *nlp) {
                 notJetFailed = false;
             } else if (l.find("Shutting down...") != string::npos) {
             	char buff[50] = {0,};
-            	sprintf_s(buff, "%s",50, utils::sharedMemoryRead());
+            	sprintf(buff, "%s", utils::sharedMemoryRead());
             	buff[4] = 0;  // set end string if match
             	if(strcmp(buff,"true") != 0){
 					Log::log("GDB-Server has been shutting down unexpected", Error, logFilter::GDB_Server);
@@ -250,14 +250,14 @@ static void callGdbServer(string command, nameLessPipe *nlp) {
             index = 0;
         string location = command.substr(0, index);
         Log::log("GDB-Server : set location of child process to " + location, Info, logFilter::GDB_Server);
-        if(location == nullpntr || chdir(location.c_str())<0){
+        if(location == "" || chdir(location.c_str())<0){
         	return ;
         }
         if(execv(argv[0], argv) == -1) {
             Log::log("GDB-Server exit with errno: \t\"" + string(strerror(errno))+ "\"  ", CriticError, logFilter::GDB_Server);
         }
         char buff[50] = {0,};
-		sprintf_s(buff, "%s",,50, utils::sharedMemoryRead());
+		sprintf(buff, "%s", utils::sharedMemoryRead());
 		buff[4] = 0;  // set end string if match
 		if(strcmp(buff,"true") != 0){
             //cout << buff<<endl;

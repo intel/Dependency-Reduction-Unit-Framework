@@ -1,4 +1,4 @@
-# Dependency-Reduction-Unit-Framework (deUnit)for C/C++ -Projects 
+# Dependency-Reduction-Unit-Framework (deUnit) for C/C++ -Projects 
 For further information’s see the [wiki](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki)! 
 
 To do your first steps it is recommended to read the “[getting started](https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/Getting-Started-with-deUnit)”!

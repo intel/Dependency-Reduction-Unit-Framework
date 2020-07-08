@@ -5,63 +5,121 @@ GDBMan=FALSE
 BISTMODE=FALSE
 EUnit=FALSE
 EUnitWithGdbMann=FALSE
-EUnitBuild=FALSE
-cd GDBManipulator/build/
-	if make 
-	then 	EUnitBuild=1
-	else 	EUnitBuild=-1
-	fi
-echo "test GDBManipulator"	
-	if make test 
-	then 	GDBMan=1
-	else 	GDBMan=-1
-	fi
-cd ../lib/CPP-Argument-Parser/build
-	if make test 
-	then		CPPARG=1
-	else		CPPARG=-1
-	fi
-echo "test eUnit on Host"
-cd ../../../../eUnit/eUnit/eUnitSelfTest
-ldconfig -p | grep cunit
- 	if [ $? == 0 ] 
-	then
-		echo "found cunit"
-		make test
-		if make test -s -l
-		then
-			echo Unit success
-			EUnit=1
-		else
-			EUnit=-1
-		fi
- 	else
-		EUnit=-2
-	fi
-echo "test eUnit in BIST Mode"
-cd BistMode
-echo "run BIST Mode"
-bash  "test.sh"
-if   [ $? == 1 ]
-	then 	BISTMODE=1
-	else
-		echo "$?"
-	fi
+gdbMannBuild=FALSE
+FOUND_CTEST=FALSE
+FOUND_GTEST=FALSE
+GDB_INSTALLED=FALSE
 
-echo "test eUnit with gdbMan on Host"
-cd ../Host
-bash "run.sh"
-if   [ $? == 1 ]
-	then 	EUnitWithGdbMann=1
-	else
-		echo "$?"
+if [[ "$OSTYPE" != "linux-gnu" ]]; then
+echo selftest does only suport system. Runinning on $OSTYPE
+exit
+fi
+CURRENT_DIR=$PWD
+FOLDER_eUnitSelfTest=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest
+FOLDER_GDBMAN=$CURRENT_DIR/GDBManipulator/build/
+FOLDER_ARGParser=$CURRENT_DIR/GDBManipulator/lib/CPP-Argument-Parser/build
+FOLDER_EUNIT_SELFTEST=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest
+FOLDER_BISTMODE=$FOLDER_EUNIT_SELFTEST/BistMode
+FOLDER_HostMode=$FOLDER_EUNIT_SELFTEST/Host
+{
+	cd $FOLDER_eUnitSelfTest/findCtest
+		if make 
+		then FOUND_CTEST=1
+		else FOUND_CTEST=-1
+		fi
+		make clean
+	cd $FOLDER_eUnitSelfTest/findGtest
+		if make 
+		then FOUND_GTEST=1
+		else FOUND_GTEST=-1
+		fi
+		make clean
+		
+	echo find gdb client
+	gdb -v 
+	if [ $? == 0 ] 
+	then GDB_INSTALLED=1
+	else GDB_INSTALLED=-1
 	fi
+		
+} &> /dev/null
+
+echo build GDBManipulator
+{
+	cd $FOLDER_GDBMAN
+	echo 
+		if make 
+		then 	gdbMannBuild=1
+		else 	gdbMannBuild=-1
+		fi
+} &> /dev/null
+if [ $FOUND_GTEST == 1 ]
+then
+	echo "test GDBManipulator"	
+	{
+			if make test 
+			then 	GDBMan=1
+			else 	GDBMan=-1
+			fi
+		cd $FOLDER_ARGParser
+			if make  test >/dev/null
+			then		CPPARG=1
+			else		CPPARG=-1
+			fi
+	} &> /dev/null
+fi
+if [ $FOUND_CTEST == 1 ]
+then
+	echo "run deUnit self test"
+	{
+		cd $FOLDER_EUNIT_SELFTEST
+		ldconfig -p | grep cunit
+		 	if [ $? == 0 ] 
+			then
+				echo "found cunit"
+				make  test
+				if make test -s -l 
+				then
+					echo Unit success
+					EUnit=1
+				else
+					EUnit=-1
+				fi
+		 	else
+				EUnit=-2
+			fi
+	} &> /dev/null
+fi
+echo "run deUnit system tests"
+{
+	cd $FOLDER_BISTMODE
+	echo "run BIST Mode"
+	bash  "test.sh"
+	if   [ $? == 1 ]
+		then 	BISTMODE=1
+		else
+			echo "$?"
+		fi
+
+	if [ $GDB_INSTALLED == 1 ]
+	then
+		echo "test eUnit with gdbMan on Host"
+		cd $FOLDER_HostMode
+		bash "run.sh"
+		if   [ $? == 1 ]
+			then 	EUnitWithGdbMann=1
+			else
+				echo "$?"
+		fi
+	fi
+} &> /dev/null
+
 
 echo ""
 echo "-------------------------------------------"
-echo "Build"
+echo "Build results:"
 echo "-------------------------------------------"
-if  [ "$EUnitBuild" == 1 ]
+if  [ "$gdbMannBuild" == 1 ]
         then 
                 echo   "  Build 		:: success"
         else 
@@ -71,30 +129,33 @@ echo "Testresults"
 echo "-------------------------------------------"
 echo "Unit Tests:"
 if  [ "$GDBMan" == 1 ]
-        then 
-                echo   "  GDBManipulator 	:: success"
-        else 
-                echo   "  GDBManipulator 	:: failed"
-        fi
- if [ "$CPPARG" == 1 ]
+        then echo   "  GDBManipulator 	:: success"
+else 
+	if [ $FOUND_GTEST == 1 ]
+	then echo   "  GDBManipulator 	:: failed"
+	else echo   "  GDBManipulator 	:: found not gTest"
+	fi
+ fi
+if [ "$CPPARG" == 1 ]
         then 
                 echo   "  CPP-Argument-Parser :: success"
         else 
-                echo   "  CPP-Argument-Parser :: failed"
-        fi
- if [ "$EUnit" == 1 ]
+        if [ $FOUND_GTEST == 1 ]
+	then echo   "  GDBManipulator 	:: failed"
+	else echo   "  GDBManipulator 	:: found not gTest"
+	fi
+ fi
+if [ "$EUnit" == 1 ]
         then 
-                echo   "  eUnit-SelfTest 	:: success"
-        elif [ "$EUnit" == -2 ]
-	then
-                echo   "  eUnit-SelfTest 	:: can not find cunit"
-	else
-		echo   "  eUnit-SelfTest 	:: failed"
+                echo   "  deUnit-SelfTest 	:: success"
+        elif [ "$FOUND_CTEST" == 1 ]
+	then echo   "  deUnit-SelfTest 	:: failed"
+	else echo   "  deUnit-SelfTest 	:: found no cunit"
         fi
 
 echo "-------------------------------------------"
 echo "System Tests:"
- if [ "$BISTMODE" == 1 ]
+if [ "$BISTMODE" == 1 ]
         then 
                 echo   "  Bist-Mode 		:: success"
         else 
@@ -104,6 +165,9 @@ if [ "$EUnitWithGdbMann" == 1 ]
         then 
                 echo   "  EUnit with GdbMann 	:: success"
         else 
-                echo   "  EUnit with GdbMann 	:: failed"
+        if [ $GDB_INSTALLED == 1 ]
+        then echo   	"  DEUnit with GdbMann :: failed"
+        else echo	"  DEUnit with GdbMann :: found no gdb client"
         fi
+ fi
 echo "-------------------------------------------"

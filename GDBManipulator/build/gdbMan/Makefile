@@ -14,7 +14,7 @@
 #    make
 #
 
-APP =		gdbMann
+APP =		gdbMan
 APP_SRCS =	../../main.cpp $(shell find \
 			../../src \
 			../../lib/SimpleLogging/src \

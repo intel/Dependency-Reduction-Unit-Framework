@@ -9,16 +9,6 @@ gdbMannBuild=FALSE
 FOUND_CTEST=FALSE
 FOUND_GTEST=FALSE
 GDB_INSTALLED=FALSE
-SUBMODULES_Init=FALSE
-CURRENT_DIR=$PWD
-FOLDER_eUnitSelfTest=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest
-FOLDER_GDBMAN=$CURRENT_DIR/GDBManipulator/build/
-FOLDER_ARGParser=$CURRENT_DIR/GDBManipulator/lib/CPP-Argument-Parser/build
-FOLDER_EUNIT_SELFTEST=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest
-FOLDER_BISTMODE=$FOLDER_EUNIT_SELFTEST/BistMode
-FOLDER_HostMode=$FOLDER_EUNIT_SELFTEST/Host
-FOLDER_SUBMODUL_LOG=$CURRENT_DIR/GDBManipulator/lib/SimpleLogging/src
-FOLDER_SUBMODUL_ARG=$CURRENT_DIR/GDBManipulator/lib/CPP-Argument-Parser/build
 echo check requirements
 gcc -v &>/dev/null
 if [ $? != 0 ] 
@@ -37,20 +27,15 @@ exit -1
 fi 
 if [[ "$OSTYPE" != "linux-gnu" ]]; then
 echo selftest is only on Linux suported. Runinning on $OSTYPE
-exit -1
+echo The selftest continues. But there might be an unexpected behaviour 
 fi
-
-if ! ( [ -d  $FOLDER_SUBMODUL_LOG ] )
-then echo submodules are not proper initialized.
-	echo "please check the FAQ for a possible result: https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/FAQ "
-	exit -1
-fi
-if ! ( [ -d  $FOLDER_SUBMODUL_ARG ] )
-then echo submodules are not proper initialized.
-	echo "please check the FAQ for a possible result: https://github.com/intel/Dependency-Reduction-Unit-Framework/wiki/FAQ "
-	exit -1
-fi
-
+CURRENT_DIR=$PWD
+FOLDER_eUnitSelfTest=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest
+FOLDER_GDBMAN=$CURRENT_DIR/GDBManipulator/build/
+FOLDER_ARGParser=$CURRENT_DIR/GDBManipulator/lib/CPP-Argument-Parser/build
+FOLDER_EUNIT_SELFTEST=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest
+FOLDER_BISTMODE=$FOLDER_EUNIT_SELFTEST/BistMode
+FOLDER_HostMode=$FOLDER_EUNIT_SELFTEST/Host
 {
 	cd $FOLDER_eUnitSelfTest/findCtest
 		if make 

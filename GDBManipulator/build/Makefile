@@ -17,7 +17,7 @@
 
 all::
 	make -C  gdbMan
-	make -s -C gdbManTest
+
 
 test :
 	make -s -C gdbManTest

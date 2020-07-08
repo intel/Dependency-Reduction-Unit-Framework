@@ -1,5 +1,5 @@
-echo "run self test"
-echo "build GDBManipulator"
+echo "Self test"
+echo "-------------------------------------------"
 CPPARG=FALSE
 GDBMan=FALSE
 BISTMODE=FALSE
@@ -9,10 +9,25 @@ gdbMannBuild=FALSE
 FOUND_CTEST=FALSE
 FOUND_GTEST=FALSE
 GDB_INSTALLED=FALSE
-
+echo check requirements
+gcc -v &>/dev/null
+if [ $? != 0 ] 
+then echo no gcc installed. Exit selfTest
+exit -1
+fi 
+g++ -v &>/dev/null
+if [ $? != 0 ] 
+then echo no g++ installed. Exit selfTest
+exit -1
+fi 
+make -v &>/dev/null
+if [ $? != 0 ] 
+then echo no make installed. Exit selfTest
+exit -1
+fi 
 if [[ "$OSTYPE" != "linux-gnu" ]]; then
 echo selftest does only suport system. Runinning on $OSTYPE
-exit
+exit -1
 fi
 CURRENT_DIR=$PWD
 FOLDER_eUnitSelfTest=$CURRENT_DIR/eUnit/eUnit/eUnitSelfTest

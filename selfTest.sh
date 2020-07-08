@@ -26,7 +26,7 @@ then echo no make installed. Exit selfTest
 exit -1
 fi 
 if [[ "$OSTYPE" != "linux-gnu" ]]; then
-echo selftest is only on Linux suported. Runinning on $OSTYPE
+echo selftest is only on Linux supported. Runinning on $OSTYPE
 exit -1
 fi
 CURRENT_DIR=$PWD

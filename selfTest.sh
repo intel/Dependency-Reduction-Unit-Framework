@@ -59,6 +59,27 @@ FOLDER_HostMode=$FOLDER_EUNIT_SELFTEST/Host
 		
 } &> /dev/null
 
+if [ $FOUND_GTEST == -1 ]
+	then 
+	echo    "  GDBManipulator 	:: found not gTest"
+	echo 	"  	 try: 'sudo apt install libgtest-dev'"
+	exit
+fi
+if [ $FOUND_CTEST == -1 ]
+	then 
+	echo    "  GDBManipulator 	:: found not cUnit"
+	echo 	"  	 try: 'sudo apt install libcunit1-dev'"
+	exit
+fi
+
+if [ $GDB_INSTALLED == -1 ]
+	then 
+	echo    "  GDBManipulator 	:: found not gdb"
+	echo 	"  	 try: 'sudo apt install gdb'"
+	exit
+fi
+
+
 echo build GDBManipulator
 {
 	cd $FOLDER_GDBMAN
